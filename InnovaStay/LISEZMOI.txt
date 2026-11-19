@@ -1,0 +1,33 @@
+INNOVASTAY - Gestion d'hotel et de residence meublee
+Par InnovaData, Abidjan
+
+LIEN DE L'APPLICATION
+  https://innovadatastay.netlify.app/
+
+POUR COMMENCER
+  1. Ouvrez le lien avec Chrome (Android / ordinateur) ou Safari (iPhone).
+  2. Installez l'application :
+       Android : menu (3 points) > "Installer l'application"
+       iPhone  : Partager > "Sur l'ecran d'accueil"
+  3. A la premiere ouverture, l'essai gratuit de 7 jours demarre tout seul
+     (aucun code necessaire). Appuyez sur "Entrer dans l'application".
+  4. Lisez le guide, puis configurez votre etablissement dans Parametres
+     (logo, nom, contacts, chambres et tarifs).
+  5. Pour continuer apres l'essai, appuyez sur "Demander le code 30 jours"
+     ou "Demander le code 1 an" : WhatsApp s'ouvre avec le message pret.
+
+CONTENU DE CE DOSSIER
+  Guide-utilisation-InnovaStay.pdf ....... le guide d'utilisation
+  innovastay.html ........................ version fichier (sans installation)
+
+TARIFS
+  Essai gratuit : 7 jours
+  1 mois (30 jours) : 1 500 F
+  1 an : 15 000 F
+
+IMPORTANT
+  Vos donnees restent sur votre appareil. Faites une sauvegarde chaque
+  semaine (Rapports > Telecharger la sauvegarde).
+
+BESOIN D'UN CODE OU D'AIDE ?
+  Tel / WhatsApp : 07 87 33 29 94 / 05 46 06 05 99 / 05 04 69 58 84

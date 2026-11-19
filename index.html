@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#2B57A7">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="InnovaStay">
+<title>InnovaStay</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%232B57A7%22/%3E%3Crect%20x%3D%2213%22%20y%3D%2211%22%20width%3D%2238%22%20height%3D%225%22%20rx%3D%222%22%20fill%3D%22%23D83A3A%22/%3E%3Crect%20x%3D%2216%22%20y%3D%2216%22%20width%3D%2232%22%20height%3D%2238%22%20fill%3D%22%23fff%22/%3E%3Cg%20fill%3D%22%23FCBF17%22%3E%3Crect%20x%3D%2220%22%20y%3D%2221%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22/%3E%3Crect%20x%3D%2229%22%20y%3D%2221%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22/%3E%3Crect%20x%3D%2238%22%20y%3D%2221%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22/%3E%3Crect%20x%3D%2220%22%20y%3D%2231%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22/%3E%3Crect%20x%3D%2229%22%20y%3D%2231%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22/%3E%3Crect%20x%3D%2238%22%20y%3D%2231%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22/%3E%3Crect%20x%3D%2220%22%20y%3D%2241%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22/%3E%3Crect%20x%3D%2238%22%20y%3D%2241%22%20width%3D%226%22%20height%3D%226%22%20rx%3D%221%22/%3E%3C/g%3E%3Crect%20x%3D%2228.5%22%20y%3D%2242%22%20width%3D%227%22%20height%3D%2212%22%20rx%3D%221.5%22%20fill%3D%22%23D83A3A%22/%3E%3Crect%20x%3D%2210%22%20y%3D%2254%22%20width%3D%2244%22%20height%3D%223.5%22%20rx%3D%221.75%22%20fill%3D%22%2314181F%22/%3E%3C/svg%3E">
+<style>
+:root{--ink:#14181F;--blue:#2B57A7;--red:#D83A3A;--sun:#FCBF17;--paper:#F7F8FA;--line:#E3E6EC;--ok:#1a9e6b}
+*{box-sizing:border-box}
+body{margin:0;font-family:Raleway,"Segoe UI",system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.45}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.bar{display:flex;align-items:center;gap:12px;padding:10px 16px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:21px;color:var(--ink)}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav button{border:0;background:none;padding:8px 12px;border-radius:6px;font:inherit;font-weight:600;color:var(--ink);cursor:pointer}
+nav button.on{background:var(--blue);color:#fff}
+main{max-width:1100px;margin:0 auto;padding:16px}
+h2{margin:0 0 12px;font-size:20px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px}
+.kpi b{display:block;font-size:24px;font-variant-numeric:tabular-nums}
+.kpi span{font-size:13px;color:#555}
+.alert{border-left:4px solid var(--red);background:#fdeeee;border-radius:6px;padding:10px 12px;margin-bottom:16px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:14px}
+.tile{position:relative;text-align:left;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 10px 10px 16px;cursor:pointer;font:inherit;color:var(--ink)}
+.tile i{position:absolute;left:0;top:0;bottom:0;width:6px;border-radius:8px 0 0 8px}
+.tile .n{font-size:24px;font-weight:800}
+.tile small{display:block;color:#555}
+.chip{display:inline-block;font-size:12px;font-weight:700;padding:1px 6px;border-radius:4px;background:#eef1f6}
+label{display:block;font-size:14px;font-weight:600;margin:10px 0 0}
+input,select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-top:4px;background:#fff}
+input[type=checkbox]{width:auto;margin:0 6px 0 0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button.p,button.s{border:0;border-radius:6px;padding:10px 16px;font:inherit;font-weight:700;cursor:pointer;margin-top:14px}
+button.p{background:var(--blue);color:#fff}
+button.s{background:#fff;border:1px solid var(--line);color:var(--ink);margin-left:6px}
+button.d{background:var(--red);color:#fff;border:0;border-radius:6px;padding:6px 10px;cursor:pointer}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:8px;text-align:left;border-bottom:1px solid var(--line)}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
+.scroll{overflow-x:auto}
+dialog{border:0;border-radius:10px;padding:18px;max-width:480px;width:calc(100% - 24px)}
+dialog::backdrop{background:rgba(0,0,0,.4)}
+.sum{background:var(--paper);border-radius:8px;padding:10px;margin-top:12px}
+.sum div{display:flex;justify-content:space-between}
+.muted{color:#666;font-size:13px}
+:focus-visible{outline:2px solid var(--blue);outline-offset:1px}
+[hidden]{display:none!important}.chip:empty{display:none}@media(max-width:700px){nav{order:9;width:100%;flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px}nav button{white-space:nowrap;flex:none}.logo{height:26px}.bar{padding:8px 12px;gap:8px}}a.btn{display:inline-block;border-radius:6px;padding:10px 16px;font-weight:700;text-decoration:none;margin:6px 6px 0 0}a.btn.b{background:var(--blue);color:#fff}a.btn.y{background:var(--sun);color:var(--ink)}details summary{cursor:pointer;font-weight:700;color:var(--blue);margin-top:10px}
+header{border-bottom:0}header:after{content:"";display:block;height:4px;background:linear-gradient(90deg,var(--blue) 0 34%,var(--red) 34% 67%,var(--sun) 67%)}
+.logo{height:36px;width:auto;flex:none;margin-left:auto}
+.kpis .card:nth-child(4n+1){border-top:4px solid var(--blue)}.kpis .card:nth-child(4n+2){border-top:4px solid var(--red)}.kpis .card:nth-child(4n+3){border-top:4px solid var(--sun)}.kpis .card:nth-child(4n){border-top:4px solid var(--ink)}
+.subs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}.subs button{border:1px solid var(--line);background:#fff;border-radius:20px;padding:6px 12px;font:inherit;font-weight:600;cursor:pointer;color:var(--ink)}.subs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:8px;z-index:20}
+@media print{header,button,label,#toast,dialog{display:none!important}body{background:#fff}}
+</style>
+</head>
+<body>
+<header><div class="bar"><span class="brand" style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 64 64" width="30" height="30" role="img" aria-label="InnovaStay"><rect width="64" height="64" rx="14" fill="#2B57A7"/><rect x="13" y="11" width="38" height="5" rx="2" fill="#D83A3A"/><rect x="16" y="16" width="32" height="38" fill="#fff"/><g fill="#FCBF17"><rect x="20" y="21" width="6" height="6" rx="1"/><rect x="29" y="21" width="6" height="6" rx="1"/><rect x="38" y="21" width="6" height="6" rx="1"/><rect x="20" y="31" width="6" height="6" rx="1"/><rect x="29" y="31" width="6" height="6" rx="1"/><rect x="38" y="31" width="6" height="6" rx="1"/><rect x="20" y="41" width="6" height="6" rx="1"/><rect x="38" y="41" width="6" height="6" rx="1"/></g><rect x="28.5" y="42" width="7" height="12" rx="1.5" fill="#D83A3A"/><rect x="10" y="54" width="44" height="3.5" rx="1.75" fill="#14181F"/></svg><span>Innova<span style="color:var(--blue)">Stay</span></span></span><img id="hl" alt="" style="height:30px;width:auto;flex:none;display:none"><span class="muted" id="hn"></span><span class="chip" id="lic"></span><nav id="nav"></nav><span id="who"></span><button id="inst" class="s" hidden style="margin:0;padding:6px 12px" onclick="installApp()">Installer l'application</button><img class="logo" alt="InnovaData" src="data:image/jpeg;base64,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"></div></header>
+<main id="app"></main>
+<dialog id="dlg"></dialog><div id="toast" hidden role="status"></div>
+
+<script>
+/* ===== Stockage local : tout reste dans ce navigateur (IndexedDB), aucun serveur ===== */
+let S={rooms:[],bookings:[],payments:[],tasks:[],shifts:[],lastClose:0,cfg:null,watch:[],lastBackup:0,lastCloseBy:{},cur:''};
+const idb=()=>new Promise((ok,ko)=>{const r=indexedDB.open('aura-stays',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>ok(r.result);r.onerror=()=>ko(r.error)});
+const load=async()=>{const db=await idb();return new Promise(ok=>{const q=db.transaction('kv').objectStore('kv').get('state');q.onsuccess=()=>ok(q.result)})};
+const save=async()=>{const db=await idb();db.transaction('kv','readwrite').objectStore('kv').put(S,'state')};
+const kvGet=async k=>{const db=await idb();return new Promise(ok=>{const q=db.transaction('kv').objectStore('kv').get(k);q.onsuccess=()=>ok(q.result)})};
+const kvSet=async(k,v)=>{const db=await idb();db.transaction('kv','readwrite').objectStore('kv').put(v,k)};
+
+/* ===== Outils ===== */
+const $=s=>document.querySelector(s);
+const uid=()=>crypto.randomUUID(), now=()=>Date.now();
+const fmt=n=>(n||0).toLocaleString('fr-FR')+' F';
+const when=t=>new Date(t).toLocaleString('fr-FR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const METHODS={especes:'Espèces',orange_money:'Orange Money',mtn_momo:'MTN MoMo',wave:'Wave',moov:'Moov',carte:'Carte'};
+const KINDS={simple:'Chambre simple',vip:'Chambre VIP',suite:'Suite',appartement:'Appartement meublé',studio:'Studio'};
+const AMEN={clim:'Climatisation',canal:'Canal+',wifi:'WiFi',jacuzzi:'Jacuzzi',balcon:'Balcon'};
+const CHECK=['Climatisation','Télévision / Canal+','Literie et linge','Salle de bain','Mobilier'];
+const ST={libre:['Libre','#1a9e6b'],occ_n:['Occupée (nuitée)','#2B57A7'],occ_p:['Occupée (passage)','#FCBF17'],nettoyage:['En nettoyage','#4aa8d8'],maintenance:['En maintenance','#D83A3A']};
+const room=id=>S.rooms.find(r=>r.id===id), bk=id=>S.bookings.find(b=>b.id===id);
+const active=r=>S.bookings.find(b=>b.room===r.id&&b.status==='en_cours');
+const status=r=>r.maintenance?'maintenance':active(r)?(active(r).stay==='nuitee'?'occ_n':'occ_p'):S.tasks.some(t=>t.room===r.id&&!t.done)?'nettoyage':'libre';
+const sum=a=>a.reduce((s,x)=>s+x,0);
+const paidOf=id=>sum(S.payments.filter(p=>p.b===id&&(p.kind==='acompte'||p.kind==='solde')).map(p=>p.amount));
+const heldOf=id=>sum(S.payments.filter(p=>p.b===id).map(p=>p.kind==='caution'?p.amount:p.kind==='remboursement'?-p.amount:0));
+const day0=()=>new Date().setHours(0,0,0,0);
+
+/* ===== Tarification ===== */
+function nightsPrice(r,start,n){let t=0;for(let i=0;i<n;i++){const d=new Date(start+i*864e5).getDay();t+=([5,6].includes(d)&&r.pWe)?r.pWe:(r.pNight||0)}return t}
+const passageOver=(b,r,at)=>Math.ceil(Math.max(0,(at-b.in)/6e4-b.dur-S.cfg.grace)/60)*(r.pExtra||0);
+
+/* ===== Navigation ===== */
+let tab='dash';
+const TABS={dash:'Tableau de bord',rec:'Réception',rooms:'Chambres',cash:'Caisse',hk:'Ménage',reg:'Registre',rep:'Rapports',set:'Paramètres'};
+function go(t,pre){tab=t;render(pre)}
+function render(pre){
+  if(!licOK())return lock();
+  if(LIC.welcome)return welcome();
+  $('#nav').innerHTML=Object.entries(TABS).map(([k,v])=>`<button class="${k===tab?'on':''}" onclick="go('${k}')">${v}</button>`).join('');
+  if(S.cfg.staff.length&&!S.cfg.staff.some(x=>x.id===S.cur))S.cur=S.cfg.staff[0].id;
+  $('#who').innerHTML=S.cfg.staff.length?`<select aria-label="Réceptionniste en poste" style="width:auto;margin:0" onchange="S.cur=this.value;save();render()">${S.cfg.staff.map(x=>`<option value="${x.id}" ${x.id===S.cur?'selected':''}>${esc(x.name)}</option>`).join('')}</select>`:'';
+  $('#hn').textContent=S.cfg.hotel.name;
+  const hl=$('#hl');hl.src=S.cfg.hotel.logo||'';hl.style.display=S.cfg.hotel.logo?'block':'none';
+  const ld=licDays();$('#lic').textContent=(LIC.used.length?'Licence : ':'Essai : ')+ld+' j';$('#lic').style.cssText=ld<=3?'background:#fdeeee;color:var(--red)':ld<=7?'background:#fff8e0;color:#8a6a00':'';
+  if(now()-LIC.last>6e4){LIC.last=now();kvSet('lic',LIC)}
+  $('#app').innerHTML={dash:vDash,rec:()=>vRec(pre),rooms:vRooms,cash:vCash,hk:vHk,reg:vReg,rep:vRep,set:vSet}[tab]();
+  if(tab==='rec')quote();
+}
+function dlg(h){$('#dlg').innerHTML=h;$('#dlg').showModal()}
+const closeD=()=>$('#dlg').close();
+
+/* ===== Tableau de bord ===== */
+function vDash(){
+  if(!S.rooms.length)return `<div class="card"><h2>Bienvenue</h2><p>Commencez par renseigner votre établissement et vos types de chambre.</p><button class="p" onclick="go('set')">Ouvrir les paramètres</button><button class="s" onclick="go('rooms')">Ajouter mes chambres</button><button class="s" onclick="seed()">Charger 6 chambres d'exemple</button></div>`;
+  const st=S.rooms.map(r=>[r,status(r)]);
+  const occ=st.filter(([,s])=>s==='occ_n'||s==='occ_p'), sell=S.rooms.filter(r=>!r.maintenance).length||1;
+  const rev=sum(S.payments.filter(p=>p.at>=day0()&&(p.kind==='acompte'||p.kind==='solde')).map(p=>p.amount));
+  const soon=occ.map(([r])=>[r,active(r)]).filter(([,b])=>b.out-now()<=30*6e4).sort((a,b)=>a[1].out-b[1].out);
+  const mins=m=>m<0?`dépassé de ${-m} min`:m>=60?`${Math.floor(m/60)} h ${String(m%60).padStart(2,'0')}`:`${m} min`;
+  const floors=[...new Set(S.rooms.map(r=>r.floor||0))].sort((a,b)=>a-b);
+  return bannerLic()+bannerBackup()+`<div class="kpis">
+   <div class="card kpi"><b>${Math.round(occ.length/sell*100)} %</b><span>Occupation</span></div>
+   <div class="card kpi"><b>${fmt(rev)}</b><span>Encaissé aujourd'hui</span></div>
+   <div class="card kpi"><b>${st.filter(([,s])=>s==='occ_p').length}</b><span>Passages en cours</span></div>
+   <div class="card kpi"><b>${st.filter(([,s])=>s==='nettoyage').length}</b><span>À nettoyer</span></div></div>
+  ${soon.length?`<div class="alert"><b>À libérer bientôt</b>${soon.map(([r,b])=>`<div>Chambre ${esc(r.number)} · ${esc(b.cust.name)} — ${mins(Math.round((b.out-now())/6e4))}</div>`).join('')}</div>`:''}
+  ${floors.map(f=>`<h3>${f?'Étage '+f:'Rez-de-chaussée'}</h3><div class="tiles">${st.filter(([r])=>(r.floor||0)===f).map(([r,s])=>{const b=active(r);return `<button class="tile" onclick="openRoom('${r.id}')"><i style="background:${ST[s][1]}"></i><span class="n">${esc(r.number)}</span><small>${esc(typeName(r))}</small><span class="chip">${ST[s][0]}</span>${b?`<small>${esc(b.cust.name)}</small><small>jusqu'à ${when(b.out)}</small>`:''}</button>`}).join('')}</div>`).join('')}`;
+}
+function openRoom(id){
+  const r=room(id),s=status(r),b=active(r);
+  if(s==='libre')return go('rec',id);
+  if(b)return openCheckout(b.id);
+  if(s==='nettoyage'){const t=S.tasks.find(t=>t.room===id&&!t.done);t.done=now();save();return render()}
+  if(s==='maintenance'&&confirm(`Remettre la chambre ${r.number} en service ?`)){r.maintenance=false;save();render()}
+}
+function seed(){
+  const T=S.cfg.types,mk=(n,f,t)=>({id:uid(),number:n,floor:f,type:T[t].id,amen:[...T[t].amen],maintenance:false});
+  S.rooms=[mk('101',1,0),mk('102',1,0),mk('103',1,1),mk('104',1,1),mk('201',2,2),mk('202',2,5)];
+  S.rooms.forEach(r=>syncRooms(typ(r.type)));save();render();
+}
+const bannerBackup=()=>S.bookings.length&&now()-S.lastBackup>7*864e5?`<div class="alert" style="border-color:var(--sun);background:#fff8e0"><b>Pensez à sauvegarder vos données.</b> ${S.lastBackup?'Dernière sauvegarde : '+when(S.lastBackup)+'.':'Aucune sauvegarde faite.'} <button class="s" style="margin:0" onclick="backup()">Sauvegarder maintenant</button></div>`:'';
+
+/* ===== Réception : arrivée ===== */
+function vRec(pre){
+  const free=S.rooms.filter(r=>status(r)==='libre');
+  if(!free.length)return `<div class="card"><h2>Réception</h2><p>Aucune chambre libre.</p></div>`;
+  return `<form class="card" id="ci" onsubmit="submitCI(event)" oninput="quote()" style="max-width:560px"><h2>Nouvelle arrivée</h2>
+  <label>Type de séjour<select name="stay"><option value="nuitee">Nuitée</option><option value="passage">Passage (à l'heure)</option></select></label>
+  <label>Chambre libre<select name="room" required>${free.map(r=>`<option value="${r.id}" ${r.id===pre?'selected':''}>${esc(r.number)} · ${esc(typeName(r))}</option>`).join('')}</select></label>
+  <label id="rn">Nombre de nuits<input name="nights" type="number" min="1" value="1"></label>
+  <label id="rf" hidden>Forfait<select name="forfait"><option value="120">2 heures</option><option value="180">3 heures</option></select></label>
+  <h3>Client</h3>
+  <label>Nom complet<input name="name" required></label>
+  <label>Téléphone<input name="phone" type="tel" inputmode="tel" placeholder="07 00 00 00 00"></label><label>Nationalité<input name="nat" value="Ivoirienne" list="natl"></label><datalist id="natl"><option>Ivoirienne<option>Burkinabè<option>Malienne<option>Guinéenne<option>Sénégalaise<option>Ghanéenne<option>Nigériane<option>Béninoise<option>Togolaise<option>Camerounaise<option>Libanaise<option>Française</datalist>
+  <div class="row"><label>Pièce d'identité<select name="docType"><option>CNI</option><option>Passeport</option><option>Permis</option><option>Autre</option></select></label><label>Numéro<input name="docNum"></label></div>
+  <label>Copie de la pièce (photo)<input name="doc" type="file" accept="image/*" capture="environment"></label>
+  <h3>État des lieux</h3><p class="muted">Cochez ce qui est abîmé ou manquant.</p>
+  ${CHECK.map(c=>`<label style="font-weight:400"><input type="checkbox" name="iss" value="${c}">${c}</label>`).join('')}
+  <h3>Paiement</h3>
+  <div class="row"><label>Montant encaissé (F)<input name="paid" type="number" min="0" step="100" value="0"></label><label>Mode<select name="method">${payOpts()}</select></label></div><label>Référence de transaction Mobile Money (facultatif)<input name="ref" placeholder="numéro de transaction du SMS"></label>
+  <label style="font-weight:400"><input type="checkbox" name="caution" checked>Encaisser la caution</label>
+  <div class="sum" id="q"></div>
+  <button class="p">Enregistrer l'arrivée</button></form>`;
+}
+function quote(){
+  const f=$('#ci');if(!f)return;const r=room(f.room.value),st=f.stay.value;
+  $('#rn').hidden=st!=='nuitee';$('#rf').hidden=st!=='passage';
+  let t=0,d=0;if(r){t=st==='nuitee'?nightsPrice(r,now(),Math.max(1,+f.nights.value||1)):(+f.forfait.value===120?r.p2h:r.p3h)||0;d=f.caution.checked?r.deposit||0:0}
+  $('#q').innerHTML=`<div><span>Séjour</span><b>${fmt(t)}</b></div>${d?`<div><span>Caution</span><span>${fmt(d)}</span></div>`:''}<div><span>Reste à payer</span><b>${fmt(Math.max(0,t-(+f.paid.value||0)))}</b></div>${t?'':'<p class="muted">Aucun tarif pour ce type de séjour : renseignez-le dans Paramètres › Types et tarifs.</p>'}`;
+}
+const readImg=file=>new Promise(ok=>{const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',.7))};im.src=fr.result};fr.readAsDataURL(file)});
+async function submitCI(e){
+  e.preventDefault();const f=e.target,r=room(f.room.value);if(!r)return;
+  const st=f.stay.value,n=Math.max(1,+f.nights.value||1),t=now(),dur=+f.forfait.value;
+  const amount=st==='nuitee'?nightsPrice(r,t,n):(dur===120?r.p2h:r.p3h)||0;
+  if(!amount&&!confirm('Aucun tarif défini pour ce séjour. Continuer avec 0 F ?'))return;
+  const img=f.doc.files[0]?await readImg(f.doc.files[0]):null;
+  const out=st==='nuitee'?(()=>{const d=new Date(t+n*864e5);d.setHours(+S.cfg.out.split(':')[0],+S.cfg.out.split(':')[1],0,0);return +d})():t+dur*6e4;
+  const b={id:uid(),room:r.id,stay:st,in:t,out,dur:st==='passage'?dur:0,nights:st==='nuitee'?n:0,amount,extra:0,status:'en_cours',
+    cust:{name:f.name.value.trim(),phone:f.phone.value,nat:f.nat.value,docType:f.docType.value,docNum:f.docNum.value,img},
+    issues:[...f.querySelectorAll('[name=iss]:checked')].map(x=>x.value)};
+  const nm=x=>String(x||'').replace(/\s/g,'').toLowerCase();
+  const wl=S.watch.find(w=>(w.phone&&nm(w.phone)===nm(b.cust.phone))||(w.docNum&&nm(w.docNum)===nm(b.cust.docNum))||(w.name&&nm(w.name)===nm(b.cust.name)));
+  if(wl&&!confirm(`Attention : client à surveiller (${wl.reason}). Enregistrer quand même l'arrivée ?`))return;
+  S.bookings.push(b);
+  const pay=(kind,a)=>a>0&&S.payments.push({id:uid(),b:b.id,kind,method:f.method.value,amount:a,at:t,ref:f.ref.value,by:S.cur});
+  pay('acompte',+f.paid.value||0);pay('caution',f.caution.checked?r.deposit||0:0);
+  await save();go('dash');
+}
+
+/* ===== Départ, prolongation, reçu ===== */
+function openCheckout(bid){
+  const b=bk(bid),r=room(b.room),over=b.stay==='passage'?passageOver(b,r,now()):0;
+  const total=b.amount+b.extra+over,bal=total-paidOf(bid),held=heldOf(bid);
+  dlg(`<h2>Départ · Chambre ${esc(r.number)}</h2><p>${esc(b.cust.name)} — arrivée ${when(b.in)}, départ prévu ${when(b.out)}</p>
+  <div class="sum"><div><span>Séjour</span><span>${fmt(b.amount)}</span></div>${b.extra?`<div><span>Prolongations</span><span>${fmt(b.extra)}</span></div>`:''}${over?`<div><span>Heures supplémentaires</span><span>${fmt(over)}</span></div>`:''}
+  <div><span>Déjà payé</span><span>${fmt(paidOf(bid))}</span></div><div><b>Reste à payer</b><b>${fmt(Math.max(0,bal))}</b></div>${held?`<div><span>Caution détenue</span><span>${fmt(held)}</span></div>`:''}</div>
+  <form onsubmit="doCheckout(event,'${bid}',${over})"><div class="row"><label>Montant encaissé (F)<input name="amt" type="number" min="0" value="${Math.max(0,bal)}"></label>
+  <label>Mode<select name="m">${payOpts()}</select></label></div><label>Référence Mobile Money (facultatif)<input name="tx"></label>
+  ${held?`<label style="font-weight:400"><input type="checkbox" name="ref" checked>Rendre la caution (${fmt(held)})</label>`:''}
+  <button class="p">Valider le départ</button><button type="button" class="s" onclick="extend('${bid}')">Prolonger (+1 ${b.stay==='nuitee'?'nuit':'heure'})</button><button type="button" class="s" onclick="printReceipt('${bid}',${over})">Reçu</button><button type="button" class="s" onclick="waReceipt('${bid}',${over})">WhatsApp</button><button type="button" class="s" onclick="closeD()">Fermer</button></form>`);
+}
+async function doCheckout(e,bid,over){
+  e.preventDefault();const f=e.target,b=bk(bid),a=+f.amt.value||0,t=now(),held=heldOf(bid);
+  b.extra+=over;
+  if(a>0)S.payments.push({id:uid(),b:bid,kind:'solde',method:f.m.value,amount:a,at:t,ref:f.tx.value,by:S.cur});
+  if(f.ref?.checked&&held>0)S.payments.push({id:uid(),b:bid,kind:'remboursement',method:'especes',amount:held,at:t,by:S.cur});
+  const left=b.amount+b.extra-paidOf(bid);
+  if(left>0&&!confirm(`Il reste ${fmt(left)} impayé. Valider quand même ?`)){b.extra-=over;S.payments=S.payments.filter(p=>p.at!==t);return}
+  b.status='terminee';b.outAt=t;S.tasks.push({id:uid(),room:b.room,b:bid,at:t,done:0});
+  await save();closeD();render();
+}
+function extend(bid){
+  const b=bk(bid),r=room(b.room);
+  if(b.stay==='nuitee'){b.nights++;b.out+=864e5;b.amount+=nightsPrice(r,b.out-864e5,1)}else{b.dur+=60;b.out+=36e5;b.extra+=r.pExtra||0}
+  save();openCheckout(bid);
+}
+const wa=p=>{p=String(p||'').replace(/\D/g,'');return p.length===10?'225'+p:p};
+const payOpts=()=>Object.entries(METHODS).filter(([k])=>S.cfg.pay[k]?.on!==false).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');
+function printReceipt(bid,over=0){
+  const b=bk(bid),r=room(b.room),ps=S.payments.filter(p=>p.b===bid),H=S.cfg.hotel;
+  const w=window.open('','_blank','width=380,height=640');if(!w)return alert('Autorisez les fenêtres pop-up pour imprimer.');
+  const mm=Object.entries(METHODS).filter(([k])=>S.cfg.pay[k].on&&S.cfg.pay[k].num).map(([k,v])=>`${v} : ${esc(S.cfg.pay[k].num)}`);
+  w.document.write(`<html><head><meta charset="utf-8"></head><body style="font:13px monospace;width:72mm;margin:0 auto">
+  ${H.logo?`<img src="${H.logo}" style="display:block;margin:6px auto 0;max-height:60px;max-width:100%">`:''}<h3 style="text-align:center;margin:6px 0 2px">${esc(H.name||'InnovaStay')}</h3>
+  <p style="text-align:center;margin:0">${esc([H.addr,H.city].filter(Boolean).join(', '))}<br>${esc(H.phone)}${H.web?`<br>${esc(H.web)}`:''}${H.ncc?`<br>NCC : ${esc(H.ncc)}`:''}${H.rccm?`<br>RCCM : ${esc(H.rccm)}`:''}</p><hr>
+  Chambre ${esc(r.number)} (${b.stay==='nuitee'?b.nights+' nuit(s)':'passage'})<br>Client : ${esc(b.cust.name)}<br>Arrivée : ${when(b.in)}<br>Départ : ${when(b.outAt||b.out)}<hr>
+  Séjour : ${fmt(b.amount)}<br>${b.extra+over?`Suppléments : ${fmt(b.extra+over)}<br>`:''}<b>Total : ${fmt(b.amount+b.extra+over)}</b><hr>
+  ${ps.map(p=>`${p.kind} (${METHODS[p.method]}) : ${fmt(p.amount)}${p.ref?' réf. '+esc(p.ref):''}<br>`).join('')}<hr>
+  ${mm.length?`Paiement mobile :<br>${mm.join('<br>')}<hr>`:''}${H.wifi?`WiFi : ${esc(H.wifi)}<br>`:''}<p style="text-align:center">${esc(H.footer)}</p></body></html>`);
+  w.document.close();w.focus();w.print();
+}
+function waReceipt(bid,over=0){
+  const b=bk(bid),r=room(b.room),H=S.cfg.hotel,tot=b.amount+b.extra+over,paid=paidOf(bid);
+  if(!b.cust.phone)return alert('Aucun numéro de téléphone pour ce client.');
+  const t=`${H.name||'InnovaStay'}\nReçu - Chambre ${r.number}\nClient : ${b.cust.name}\nTotal : ${fmt(tot)}\nPayé : ${fmt(paid)}\nReste : ${fmt(Math.max(0,tot-paid))}\n${H.footer}`;
+  window.open(`https://wa.me/${wa(b.cust.phone)}?text=${encodeURIComponent(t)}`,'_blank');
+}
+
+/* ===== Chambres ===== */
+const CONF={vent:'Ventilée',clim:'Climatisée'};
+const PR=['pNight','pWe','p2h','p3h','pExtra','deposit'];
+const typ=id=>S.cfg.types.find(t=>t.id===id);
+const typeName=r=>{const t=typ(r.type);return t?t.name:(KINDS[r.kind]||'—')};
+const amenLabel=id=>S.cfg.amen.find(a=>a.id===id)?.label;
+const pf=v=>v?fmt(v):'—';
+function syncRooms(t){if(t)S.rooms.filter(r=>r.type===t.id).forEach(r=>PR.forEach(k=>r[k]=t[k]))}
+function vRooms(){
+  return `<div class="row" style="grid-template-columns:auto 1fr;align-items:center"><h2>Chambres</h2><div><button class="p" style="margin:0" onclick="roomForm()">Ajouter des chambres</button></div></div>
+  <div class="card scroll"><table><tr><th>N°</th><th>Type</th><th>Étage</th><th>Équipements</th><th class="r">Nuitée</th><th class="r">Passage 2 h</th><th class="r">Caution</th><th></th></tr>
+  ${S.rooms.map(r=>`<tr><td><b>${esc(r.number)}</b></td><td>${esc(typeName(r))}${typ(r.type)?` <span class="chip">${CONF[typ(r.type).conf]}</span>`:''}</td><td>${r.floor||0}</td><td>${(r.amen||[]).map(amenLabel).filter(Boolean).join(', ')||'—'}</td><td class="r">${fmt(r.pNight)}</td><td class="r">${pf(r.p2h)}</td><td class="r">${pf(r.deposit)}</td>
+  <td class="r"><button class="s" style="margin:0" onclick="roomForm('${r.id}')">Modifier</button> <button class="s" style="margin:0" onclick="toggleMaint('${r.id}')">${r.maintenance?'Remettre en service':'Maintenance'}</button></td></tr>`).join('')||'<tr><td>Aucune chambre.</td></tr>'}</table></div>`;
+}
+function roomForm(id){
+  if(!S.cfg.types.length)return alert("Créez d'abord un type de chambre dans Paramètres › Types et tarifs.");
+  const r=id?room(id):{number:'',floor:0,type:S.cfg.types[0].id,amen:[...S.cfg.types[0].amen]};
+  dlg(`<h2>${id?'Chambre '+esc(r.number):'Nouvelles chambres'}</h2><form onsubmit="saveRoom(event,'${id||''}')">
+  <div class="row"><label>Numéro<input name="number" required value="${esc(r.number)}"></label><label>Étage<input name="floor" type="number" value="${r.floor||0}"></label></div>
+  ${id?'':`<label>Créer en série jusqu'au n° (facultatif)<input name="to" type="number" placeholder="ex. 110 pour créer 101 à 110"></label>`}
+  <label>Type de chambre<select name="type" onchange="fillAm(this.form)">${S.cfg.types.map(t=>`<option value="${t.id}" ${t.id===r.type?'selected':''}>${esc(t.name)} (${CONF[t.conf]}) — ${fmt(t.pNight)}</option>`).join('')}</select></label>
+  <p style="margin:10px 0 0;font-weight:600;font-size:14px">Équipements</p>${S.cfg.amen.map(a=>`<label style="display:inline-block;font-weight:400;margin-right:12px"><input type="checkbox" name="amen" value="${a.id}" ${(r.amen||[]).includes(a.id)?'checked':''}>${esc(a.label)}</label>`).join('')}
+  <button class="p">Enregistrer</button><button type="button" class="s" onclick="closeD()">Annuler</button></form>`);
+}
+function fillAm(f){const t=typ(f.type.value);f.querySelectorAll('[name=amen]').forEach(c=>c.checked=!!t&&t.amen.includes(c.value))}
+function saveRoom(e,id){
+  e.preventDefault();const f=e.target,n=f.number.value.trim(),t=typ(f.type.value);
+  const base={floor:+f.floor.value||0,type:t.id},am=[...f.querySelectorAll('[name=amen]:checked')].map(x=>x.value);
+  const pr=Object.fromEntries(PR.map(k=>[k,t[k]]));
+  if(id){
+    if(S.rooms.some(r=>r.number===n&&r.id!==id))return alert('Ce numéro de chambre existe déjà.');
+    Object.assign(room(id),{number:n,...base,amen:am,...pr});
+  }else{
+    const to=+(f.to?.value),from=parseInt(n);
+    const nums=(to&&/^\d+$/.test(n)&&to>=from&&to-from<200)?Array.from({length:to-from+1},(_,i)=>String(from+i)):[n];
+    const dup=nums.filter(x=>S.rooms.some(r=>r.number===x));
+    if(dup.length)return alert('Numéro(s) déjà existant(s) : '+dup.join(', '));
+    nums.forEach(x=>S.rooms.push({id:uid(),number:x,maintenance:false,...base,amen:[...am],...pr}));
+  }
+  save();closeD();render();
+}
+function toggleMaint(id){const r=room(id);if(active(r))return alert("Chambre occupée : faites d'abord le départ.");r.maintenance=!r.maintenance;save();render()}
+
+/* ===== Ménage ===== */
+function vHk(){
+  const open=S.tasks.filter(t=>!t.done);
+  return `<h2>Ménage</h2><div class="card">${open.length?`<table>${open.map(t=>`<tr><td><b>Chambre ${esc(room(t.room)?.number)}</b></td><td>libérée à ${when(t.at)}</td><td class="r"><button class="p" style="margin:0" onclick="doneTask('${t.id}')">Nettoyage terminé</button></td></tr>`).join('')}</table>`:'<p>Aucune chambre à nettoyer.</p>'}</div>`;
+}
+function doneTask(id){S.tasks.find(t=>t.id===id).done=now();save();render()}
+
+/* ===== Caisse ===== */
+function vCash(){
+  const k=S.cur||'_',since=Math.max(S.lastCloseBy[k]||0,day0()),multi=S.cfg.staff.length>0;
+  const ps=S.payments.filter(p=>p.at>=since&&(!multi||p.by===S.cur));
+  const cash=sum(ps.filter(p=>p.method==='especes').map(p=>p.kind==='remboursement'?-p.amount:p.amount));
+  const debts=S.bookings.filter(b=>b.status==='terminee'&&b.amount+b.extra-paidOf(b.id)>0);
+  const who=id=>S.cfg.staff.find(x=>x.id===id)?.name||'';
+  return `<h2>Caisse${multi?' · '+esc(who(S.cur)):''}</h2><div class="kpis"><div class="card kpi"><b>${fmt(cash)}</b><span>Espèces attendues en caisse</span></div>
+  <div class="card kpi"><b>${fmt(sum(ps.filter(p=>p.method!=='especes'&&p.kind!=='remboursement').map(p=>p.amount)))}</b><span>Mobile Money et cartes</span></div></div>
+  <form class="card" onsubmit="closeShift(event,${cash})" style="max-width:420px"><b>Clôture de caisse</b><label>Espèces comptées (F)<input name="c" type="number" min="0" required></label><button class="p">Clôturer</button></form>
+  ${debts.length?`<h3>Impayés</h3><div class="card scroll"><table>${debts.map(b=>{const d=b.amount+b.extra-paidOf(b.id);return `<tr><td>Ch. ${esc(room(b.room)?.number)}</td><td>${esc(b.cust.name)}</td><td>${esc(b.cust.phone)}</td><td class="r"><b>${fmt(d)}</b></td><td class="r"><button class="p" style="margin:0" onclick="payDebt('${b.id}')">Encaisser</button> <button class="s" style="margin:0" onclick="relance('${b.id}')">Relancer</button></td></tr>`}).join('')}</table></div>`:''}
+  <h3>Opérations depuis la dernière clôture</h3><div class="card scroll"><table>${ps.slice().reverse().map(p=>{const b=bk(p.b);return `<tr><td>${when(p.at)}</td><td>${esc(room(b.room)?.number)} · ${esc(b.cust.name)}</td><td>${p.kind}</td><td>${METHODS[p.method]}${p.ref?' · '+esc(p.ref):''}</td><td class="r">${p.kind==='remboursement'?'−':''}${fmt(p.amount)}</td></tr>`}).join('')||'<tr><td>Aucune opération.</td></tr>'}</table></div>
+  ${S.shifts.length?`<h3>Clôtures</h3><div class="card scroll"><table>${S.shifts.slice().reverse().map(s=>`<tr><td>${when(s.at)} ${esc(who(s.by))}</td><td class="r">Attendu ${fmt(s.exp)}</td><td class="r">Compté ${fmt(s.cnt)}</td><td class="r" style="color:${s.cnt-s.exp?'var(--red)':'var(--ok)'}">Écart ${fmt(s.cnt-s.exp)}</td></tr>`).join('')}</table></div>`:''}`;
+}
+function closeShift(e,exp){e.preventDefault();const c=+e.target.c.value;S.shifts.push({at:now(),exp,cnt:c,by:S.cur});S.lastCloseBy[S.cur||'_']=now();save();render()}
+function payDebt(bid){
+  const b=bk(bid),d=b.amount+b.extra-paidOf(bid);
+  dlg(`<h2>Encaisser un impayé</h2><p>${esc(b.cust.name)} · reste ${fmt(d)}</p><form onsubmit="doPayDebt(event,'${bid}')"><div class="row"><label>Montant (F)<input name="a" type="number" min="1" max="${d}" value="${d}" required></label><label>Mode<select name="m">${payOpts()}</select></label></div><label>Référence Mobile Money (facultatif)<input name="tx"></label><button class="p">Encaisser</button><button type="button" class="s" onclick="closeD()">Annuler</button></form>`);
+}
+function doPayDebt(e,bid){e.preventDefault();const f=e.target;S.payments.push({id:uid(),b:bid,kind:'solde',method:f.m.value,amount:+f.a.value,at:now(),ref:f.tx.value,by:S.cur});save();closeD();render()}
+function relance(bid){
+  const b=bk(bid),d=b.amount+b.extra-paidOf(bid);
+  if(!b.cust.phone)return alert('Aucun numéro de téléphone pour ce client.');
+  window.open(`https://wa.me/${wa(b.cust.phone)}?text=${encodeURIComponent(`Bonjour ${b.cust.name}, il reste ${fmt(d)} à régler pour votre séjour à ${S.cfg.hotel.name||'notre établissement'}. Merci de nous contacter.`)}`,'_blank');
+}
+
+/* ===== Rapports, export, sauvegarde ===== */
+let days=30;
+function vRep(){
+  const from=now()-days*864e5,ps=S.payments.filter(p=>p.at>=from&&(p.kind==='acompte'||p.kind==='solde')),bs=S.bookings.filter(b=>b.in>=from&&b.status!=='annulee');
+  const by=m=>sum(ps.filter(p=>p.method===m).map(p=>p.amount));
+  const stay=s=>bs.filter(b=>b.stay===s);const rv=s=>sum(stay(s).map(b=>b.amount+b.extra));
+  return `<h2>Rapports</h2><label style="max-width:220px">Période<select onchange="days=+this.value;render()">${[[1,"Aujourd'hui"],[7,'7 jours'],[30,'30 jours'],[365,'12 mois']].map(([d,l])=>`<option value="${d}" ${d===days?'selected':''}>${l}</option>`).join('')}</select></label>
+  <div class="kpis" style="margin-top:12px"><div class="card kpi"><b>${fmt(sum(ps.map(p=>p.amount)))}</b><span>Encaissé</span></div><div class="card kpi"><b>${stay('nuitee').length}</b><span>Nuitées (séjours) · ${fmt(rv('nuitee'))}</span></div><div class="card kpi"><b>${stay('passage').length}</b><span>Passages · ${fmt(rv('passage'))}</span></div></div>
+  <div class="card"><b>Encaissements par mode de paiement</b><table>${Object.entries(METHODS).map(([k,v])=>`<tr><td>${v}</td><td class="r">${fmt(by(k))}</td></tr>`).join('')}</table></div>
+  <p><button class="p" onclick="exportCSV()">Exporter en CSV (Excel)</button><button class="s" onclick="window.print()">Imprimer / PDF</button></p>
+  <div class="card"><b>Sauvegarde des données</b><p class="muted">Les données sont enregistrées uniquement dans ce navigateur. Faites une sauvegarde régulièrement : vider les données du navigateur les efface.</p>
+  <button class="p" style="margin-top:0" onclick="backup()">Télécharger la sauvegarde</button><label style="display:inline-block;margin-left:6px" class="muted">Restaurer<input type="file" accept=".json" onchange="restore(this)"></label></div>`;
+}
+function dl(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click()}
+function exportCSV(){
+  const from=now()-days*864e5,q=v=>`"${String(v??'').replace(/"/g,'""')}"`;
+  const rows=[['Date','Chambre','Client','Séjour','Type','Mode','Montant']];
+  S.payments.filter(p=>p.at>=from).forEach(p=>{const b=bk(p.b);rows.push([when(p.at),room(b.room)?.number,b.cust.name,b.stay,p.kind,METHODS[p.method],p.kind==='remboursement'?-p.amount:p.amount])});
+  dl('innovastay-encaissements.csv','\ufeff'+rows.map(r=>r.map(q).join(';')).join('\n'),'text/csv');
+}
+function backup(){S.lastBackup=now();save();dl(`innovastay-sauvegarde-${new Date().toISOString().slice(0,10)}.json`,JSON.stringify(S),'application/json');render()}
+function restore(inp){const f=inp.files[0];if(!f||!confirm('Remplacer toutes les données actuelles par cette sauvegarde ?'))return;const fr=new FileReader();fr.onload=()=>{try{S=JSON.parse(fr.result);save();render()}catch{alert('Fichier de sauvegarde invalide.')}};fr.readAsText(f)}
+
+/* ===== Registre des voyageurs ===== */
+let regDays=30;
+function vReg(){
+  const from=now()-regDays*864e5,bs=S.bookings.filter(b=>b.in>=from).sort((a,b)=>b.in-a.in);
+  return `<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">${S.cfg.hotel.logo?`<img src="${S.cfg.hotel.logo}" alt="" style="height:48px;width:auto">`:''}<div><b>${esc(S.cfg.hotel.name)}</b><div class="muted">${esc([S.cfg.hotel.addr,S.cfg.hotel.city,S.cfg.hotel.phone].filter(Boolean).join(' · '))}</div></div></div><h2>Registre des voyageurs</h2><p class="muted">Liste des clients hébergés (fiche de police), prête à imprimer ou à exporter.</p>
+  <label style="max-width:220px">Période<select onchange="regDays=+this.value;render()">${[[1,"Aujourd'hui"],[7,'7 jours'],[30,'30 jours'],[365,'12 mois']].map(([d,l])=>`<option value="${d}" ${d===regDays?'selected':''}>${l}</option>`).join('')}</select></label>
+  <p><button class="p" onclick="window.print()">Imprimer</button><button class="s" onclick="exportReg()">Exporter en CSV</button></p>
+  <div class="card scroll"><table><tr><th>Arrivée</th><th>Départ</th><th>Ch.</th><th>Nom</th><th>Nationalité</th><th>Pièce</th><th>Téléphone</th></tr>${bs.map(b=>`<tr><td>${when(b.in)}</td><td>${b.outAt?when(b.outAt):'en cours'}</td><td>${esc(room(b.room)?.number)}</td><td>${esc(b.cust.name)}</td><td>${esc(b.cust.nat)}</td><td>${esc(b.cust.docType)} ${esc(b.cust.docNum)}</td><td>${esc(b.cust.phone)}</td></tr>`).join('')||'<tr><td>Aucun séjour sur la période.</td></tr>'}</table></div>`;
+}
+function exportReg(){
+  const from=now()-regDays*864e5,q=v=>`"${String(v??'').replace(/"/g,'""')}"`,rows=[['Arrivée','Départ','Chambre','Nom','Nationalité','Pièce','Numéro de pièce','Téléphone']];
+  S.bookings.filter(b=>b.in>=from).forEach(b=>rows.push([when(b.in),b.outAt?when(b.outAt):'en cours',room(b.room)?.number,b.cust.name,b.cust.nat,b.cust.docType,b.cust.docNum,b.cust.phone]));
+  dl('innovastay-registre.csv','\ufeff'+rows.map(r=>r.map(q).join(';')).join('\n'),'text/csv');
+}
+
+/* ===== Paramètres ===== */
+function DEF(){
+  const T=(id,name,conf,a,b,c,d,e,dep,am)=>({id,name,conf,pNight:a,pWe:b,p2h:c,p3h:d,pExtra:e,deposit:dep,amen:am});
+  return{hotel:{name:'',kind:'Hôtel',addr:'',city:'Abidjan',phone:'',wa:'',email:'',ncc:'',rccm:'',wifi:'',footer:'Merci de votre visite',manager:'',web:'',logo:''},out:'12:00',grace:10,
+   types:[T('t1','Chambre ventilée','vent',10000,12000,3000,4000,1000,3000,['vent','eauchaude']),
+    T('t2','Chambre climatisée','clim',15000,18000,5000,7000,2000,5000,['clim','wifi','eauchaude','tv']),
+    T('t3','Chambre VIP climatisée','clim',25000,30000,8000,11000,3000,10000,['clim','wifi','canal','eauchaude','frigo']),
+    T('t4','Suite','clim',45000,55000,0,0,0,20000,['clim','wifi','canal','jacuzzi','frigo']),
+    T('t5','Studio meublé','clim',30000,35000,0,0,0,10000,['clim','wifi','balcon','cuisine']),
+    T('t6','Appartement meublé','clim',60000,70000,0,0,0,30000,['clim','wifi','canal','balcon','cuisine','frigo'])],
+   amen:[['clim','Climatisation'],['vent','Ventilateur'],['wifi','WiFi'],['canal','Canal+'],['tv','Télévision'],['eauchaude','Eau chaude'],['frigo','Réfrigérateur'],['cuisine','Cuisine équipée'],['jacuzzi','Jacuzzi'],['balcon','Balcon'],['gen','Groupe électrogène'],['parking','Parking'],['gardien','Sécurité 24 h'],['dej','Petit-déjeuner']].map(([id,label])=>({id,label})),
+   pay:Object.fromEntries(Object.keys(METHODS).map(k=>[k,{on:true,num:''}])),staff:[]};
+}
+function mergeCfg(c){const d=DEF();return c?{...d,...c,hotel:{...d.hotel,...c.hotel},pay:{...d.pay,...c.pay}}:d}
+let sub='etab';
+const SUBS={etab:'Établissement',types:'Types et tarifs',amen:'Confort',pay:'Paiements',staff:'Personnel',watch:'À surveiller',lic:'Licence'};
+function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>t.hidden=true,2200)}
+function vSet(){
+  return `<h2>Paramètres</h2><div class="subs">${Object.entries(SUBS).map(([k,v])=>`<button class="${k===sub?'on':''}" onclick="sub='${k}';render()">${v}</button>`).join('')}</div>${({etab:sEtab,types:sTypes,amen:sAmen,pay:sPay,staff:sStaff,watch:sWatch,lic:sLic})[sub]()}`;
+}
+function sEtab(){
+  const H=S.cfg.hotel,i=(n,l,v,t='text',x='')=>`<label>${l}<input name="${n}" type="${t}" value="${esc(v)}" ${x}></label>`;
+  return `<form class="card" style="max-width:640px" onsubmit="saveEtab(event)">
+  <p style="margin:0 0 4px;font-weight:700">Logo de votre établissement</p>
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">${H.logo?`<img src="${H.logo}" alt="Logo" style="height:56px;max-width:160px;object-fit:contain;border:1px solid var(--line);border-radius:6px;padding:4px">`:'<span class="muted">Aucun logo pour le moment</span>'}
+  <label style="margin:0;font-weight:400">Choisir une image (JPG ou PNG)<input type="file" accept="image/*" onchange="setLogo(this)"></label>${H.logo?`<button type="button" class="s" style="margin:0" onclick="delLogo()">Retirer le logo</button>`:''}</div>
+  ${i('name',"Nom de l'établissement",H.name,'text','required')}
+  <label>Type d'établissement<select name="kind">${['Hôtel','Résidence meublée','Auberge','Motel',"Maison d'hôtes"].map(k=>`<option ${k===H.kind?'selected':''}>${k}</option>`).join('')}</select></label>
+  <div class="row">${i('city','Ville / commune',H.city)}${i('addr','Quartier / adresse',H.addr)}</div>
+  <div class="row">${i('phone','Téléphone',H.phone,'tel')}${i('wa','WhatsApp',H.wa,'tel')}</div>
+  <div class="row">${i('manager','Gérant / responsable',H.manager)}${i('web','Site web ou page Facebook',H.web)}</div>${i('email','E-mail',H.email,'email')}
+  <div class="row">${i('ncc','N° compte contribuable (NCC)',H.ncc)}${i('rccm','N° RCCM',H.rccm)}</div>
+  <div class="row">${i('out','Heure de départ des nuitées',S.cfg.out,'time')}${i('grace','Tolérance passage (min)',S.cfg.grace,'number','min="0"')}</div>
+  ${i('wifi','Code WiFi (affiché sur le reçu)',H.wifi)}${i('footer','Message en bas du reçu',H.footer)}
+  <button class="p">Enregistrer</button></form>`;
+}
+function collectEtab(f){
+  const H=S.cfg.hotel;['name','kind','city','addr','phone','wa','email','ncc','rccm','wifi','footer','manager','web'].forEach(k=>H[k]=f[k].value.trim());
+  S.cfg.out=f.out.value||'12:00';S.cfg.grace=Math.max(0,+f.grace.value||0);
+}
+function saveEtab(e){e.preventDefault();collectEtab(e.target);save();toast('Paramètres enregistrés');render()}
+function setLogo(inp){
+  const file=inp.files[0];if(!file)return;const f=inp.form,fr=new FileReader();
+  fr.onload=()=>{const im=new Image();
+    im.onload=()=>{const k=Math.min(1,420/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+      collectEtab(f);S.cfg.hotel.logo=/png|svg/.test(file.type)?c.toDataURL('image/png'):c.toDataURL('image/jpeg',.85);save();toast('Logo enregistré');render()};
+    im.onerror=()=>alert('Image illisible. Choisissez un fichier JPG ou PNG.');im.src=fr.result};
+  fr.readAsDataURL(file);
+}
+function delLogo(){collectEtab($('form[onsubmit^="saveEtab"]'));S.cfg.hotel.logo='';save();render()}
+
+function sTypes(){
+  return `<p class="muted">Un type de chambre = une grille de prix. Créez par exemple « Chambre ventilée » et « Chambre climatisée » avec leurs tarifs de nuitée et de passage. Modifier un tarif met à jour les chambres de ce type ; les séjours déjà enregistrés ne changent pas.</p>
+  <button class="p" style="margin:0 0 12px" onclick="typeForm()">Ajouter un type</button>
+  <div class="card scroll"><table><tr><th>Type</th><th>Confort</th><th class="r">Nuitée</th><th class="r">Week-end</th><th class="r">2 h</th><th class="r">3 h</th><th class="r">H. sup.</th><th class="r">Caution</th><th></th></tr>
+  ${S.cfg.types.map(t=>`<tr><td><b>${esc(t.name)}</b></td><td>${CONF[t.conf]}</td><td class="r">${fmt(t.pNight)}</td><td class="r">${pf(t.pWe)}</td><td class="r">${pf(t.p2h)}</td><td class="r">${pf(t.p3h)}</td><td class="r">${pf(t.pExtra)}</td><td class="r">${pf(t.deposit)}</td><td class="r"><button class="s" style="margin:0" onclick="typeForm('${t.id}')">Modifier</button> <button class="d" onclick="delType('${t.id}')">Supprimer</button></td></tr>`).join('')}</table></div>`;
+}
+function typeForm(id){
+  const t=id?typ(id):{name:'',conf:'clim',pNight:0,pWe:0,p2h:0,p3h:0,pExtra:0,deposit:0,amen:[]};
+  const n=(k,l)=>`<label>${l}<input name="${k}" type="number" min="0" step="500" value="${t[k]||0}"></label>`;
+  dlg(`<h2>${id?esc(t.name):'Nouveau type de chambre'}</h2><form onsubmit="saveType(event,'${id||''}')">
+  <label>Nom<input name="name" required value="${esc(t.name)}" placeholder="ex. Chambre climatisée standard"></label>
+  <label>Confort<select name="conf"><option value="vent" ${t.conf==='vent'?'selected':''}>Ventilée</option><option value="clim" ${t.conf==='clim'?'selected':''}>Climatisée</option></select></label>
+  <h3>Prix par nuitée</h3><div class="row">${n('pNight','Nuitée (F)')}${n('pWe','Week-end ven.–sam. (F)')}</div>
+  <h3>Prix par passage</h3><div class="row">${n('p2h','Forfait 2 h (F)')}${n('p3h','Forfait 3 h (F)')}${n('pExtra','Heure supplémentaire (F)')}${n('deposit','Caution (F)')}</div>
+  <p style="margin:10px 0 0;font-weight:600;font-size:14px">Équipements par défaut</p>${S.cfg.amen.map(a=>`<label style="display:inline-block;font-weight:400;margin-right:12px"><input type="checkbox" name="amen" value="${a.id}" ${t.amen.includes(a.id)?'checked':''}>${esc(a.label)}</label>`).join('')}
+  <button class="p">Enregistrer</button><button type="button" class="s" onclick="closeD()">Annuler</button></form>`);
+}
+function saveType(e,id){
+  e.preventDefault();const f=e.target;
+  const v={name:f.name.value.trim(),conf:f.conf.value,amen:[...f.querySelectorAll('[name=amen]:checked')].map(x=>x.value),...Object.fromEntries(PR.map(k=>[k,Math.max(0,+f[k].value||0)]))};
+  let t=id?typ(id):null;if(t)Object.assign(t,v);else{t={id:'t'+uid().slice(0,6),...v};S.cfg.types.push(t)}
+  syncRooms(t);save();closeD();toast('Type enregistré');render();
+}
+function delType(id){
+  const n=S.rooms.filter(r=>r.type===id).length;
+  if(n)return alert(`${n} chambre(s) utilisent ce type. Changez leur type avant de le supprimer.`);
+  if(confirm('Supprimer ce type de chambre ?')){S.cfg.types=S.cfg.types.filter(t=>t.id!==id);save();render()}
+}
+function sAmen(){
+  return `<p class="muted">Ces équipements apparaissent dans la fiche de chaque chambre. Ajoutez les vôtres (forage, eau chaude, groupe électrogène…).</p>
+  <form class="row" style="grid-template-columns:1fr auto;max-width:520px" onsubmit="addAmen(event)"><input name="l" required placeholder="Nouvel équipement"><button class="p" style="margin:0">Ajouter</button></form>
+  <div class="card" style="margin-top:12px">${S.cfg.amen.map(a=>`<span class="chip" style="margin:3px;padding:5px 8px">${esc(a.label)} <a href="#" onclick="delAmen('${a.id}');return false" aria-label="Retirer ${esc(a.label)}" style="color:var(--red);text-decoration:none">✕</a></span>`).join('')}</div>`;
+}
+function addAmen(e){e.preventDefault();S.cfg.amen.push({id:'a'+uid().slice(0,6),label:e.target.l.value.trim()});save();render()}
+function delAmen(id){S.cfg.amen=S.cfg.amen.filter(a=>a.id!==id);save();render()}
+function sPay(){
+  return `<p class="muted">Activez les modes que vous acceptez. Le numéro marchand s'imprime sur le reçu pour guider le client.</p>
+  <form class="card" style="max-width:560px" onsubmit="savePay(event)">${Object.entries(METHODS).map(([k,v])=>`<div class="row" style="grid-template-columns:1fr 1.4fr;align-items:end"><label style="font-weight:600"><input type="checkbox" name="on_${k}" ${S.cfg.pay[k].on?'checked':''}>${v}</label>${k==='especes'||k==='carte'?'<span></span>':`<label>Numéro marchand<input name="n_${k}" type="tel" value="${esc(S.cfg.pay[k].num)}"></label>`}</div>`).join('')}<button class="p">Enregistrer</button></form>`;
+}
+function savePay(e){
+  e.preventDefault();const f=e.target;
+  Object.keys(METHODS).forEach(k=>{S.cfg.pay[k].on=f['on_'+k].checked;if(f['n_'+k])S.cfg.pay[k].num=f['n_'+k].value.trim()});
+  if(!Object.values(S.cfg.pay).some(p=>p.on))S.cfg.pay.especes.on=true;
+  save();toast('Modes de paiement enregistrés');render();
+}
+function sStaff(){
+  return `<p class="muted">Ajoutez vos réceptionnistes. Chaque encaissement est alors enregistré à leur nom et la clôture de caisse se fait par personne. Le réceptionniste en poste se choisit en haut de l'écran.</p>
+  <form class="row" style="grid-template-columns:1fr auto;max-width:520px" onsubmit="addStaff(event)"><input name="n" required placeholder="Nom du réceptionniste"><button class="p" style="margin:0">Ajouter</button></form>
+  <div class="card" style="margin-top:12px"><table>${S.cfg.staff.map(x=>`<tr><td>${esc(x.name)}</td><td class="r"><button class="d" onclick="delStaff('${x.id}')">Retirer</button></td></tr>`).join('')||'<tr><td class="muted">Aucun réceptionniste enregistré.</td></tr>'}</table></div>`;
+}
+function addStaff(e){e.preventDefault();const x={id:uid(),name:e.target.n.value.trim()};S.cfg.staff.push(x);if(!S.cur)S.cur=x.id;save();render()}
+function delStaff(id){S.cfg.staff=S.cfg.staff.filter(x=>x.id!==id);if(S.cur===id)S.cur=S.cfg.staff[0]?.id||'';save();render()}
+function sWatch(){
+  return `<p class="muted">Clients à problème (impayé, dégâts, vol…). Une alerte s'affiche à l'arrivée si le nom, le téléphone ou le numéro de pièce correspond. Ces informations sont personnelles : ne les gardez que si nécessaire.</p>
+  <form class="card" style="max-width:560px" onsubmit="addWatch(event)"><div class="row"><label>Nom<input name="n"></label><label>Téléphone<input name="p" type="tel"></label></div><div class="row"><label>N° de pièce<input name="d"></label><label>Motif<input name="m" required placeholder="ex. parti sans payer"></label></div><button class="p">Ajouter à la liste</button></form>
+  <div class="card scroll" style="margin-top:12px"><table>${S.watch.map((w,i)=>`<tr><td>${esc(w.name)}</td><td>${esc(w.phone)}</td><td>${esc(w.docNum)}</td><td>${esc(w.reason)}</td><td class="r"><button class="d" onclick="delWatch(${i})">Retirer</button></td></tr>`).join('')||'<tr><td class="muted">Liste vide.</td></tr>'}</table></div>`;
+}
+function addWatch(e){
+  e.preventDefault();const f=e.target;
+  if(!(f.n.value.trim()||f.p.value.trim()||f.d.value.trim()))return alert('Renseignez au moins un nom, un téléphone ou un numéro de pièce.');
+  S.watch.push({name:f.n.value.trim(),phone:f.p.value.trim(),docNum:f.d.value.trim(),reason:f.m.value.trim()});save();render();
+}
+function delWatch(i){S.watch.splice(i,1);save();render()}
+
+/* ===== Licence et activation ===== */
+const PUB="BID8qSqZeKWBzYGNpLwzslbfe6dwtdtNYxH0Xf9dc1N/Mp7HUGnHklEsteK3VGqBDjxM2WnWQwWPxNNrYYljWT4=";
+let LIC={exp:0,used:[],last:0,started:0};
+const licOK=()=>LIC.exp>now()&&now()>=LIC.last-864e5;
+const licDays=()=>Math.max(0,Math.ceil((LIC.exp-now())/864e5));
+const TELS=[['07 87 33 29 94','2250787332994'],['05 46 06 05 99','2250546060599'],['05 04 69 58 84','2250504695884']];
+const contacts=()=>`<p><b>📲 Tél / WhatsApp :</b></p>${TELS.map(([t,w])=>`<div>${t} — <a href="tel:+${w}">Appeler</a> · <a href="https://wa.me/${w}?text=${encodeURIComponent("Bonjour, je souhaite un code d'activation InnovaStay (essai gratuit de 7 jours, 1 mois ou 1 an).")}" target="_blank" rel="noopener">WhatsApp</a></div>`).join('')}`;
+const b64d=x=>Uint8Array.from(atob(x),c=>c.charCodeAt(0));
+async function activate(raw){
+  const B='ABCDEFGHIJKLMNOPQRSTUVWXYZ234567',up=String(raw).toUpperCase(),m=up.match(/\bIS((?:-[A-Z2-7]{1,6}){10,})/);
+  let c=m?m[1].replace(/-/g,''):up.replace(/[^A-Z2-7]/g,'');
+  if(!m&&c.length>116&&c.startsWith('IS'))c=c.slice(2);
+  const out=[];let bits=0,val=0;
+  for(const ch of c){val=(val<<5)|B.indexOf(ch);bits+=5;if(bits>=8){out.push((val>>(bits-8))&255);bits-=8;val&=(1<<bits)-1}}
+  if(out.length!==72)return 'Code incomplet ou invalide. Collez le code en entier.';
+  const pl=Uint8Array.from(out.slice(0,8)),sg=Uint8Array.from(out.slice(8));
+  if(pl[0]!==1)return "Ce code n'est pas destiné à InnovaStay.";
+  const days={0:30,1:365,2:180,3:7}[pl[1]];if(!days)return 'Code invalide.';
+  let ok=false;
+  try{const key=await crypto.subtle.importKey('raw',b64d(PUB),{name:'ECDSA',namedCurve:'P-256'},false,['verify']);ok=await crypto.subtle.verify({name:'ECDSA',hash:'SHA-256'},key,sg,pl)}
+  catch(e){return "Vérification impossible sur ce navigateur. Utilisez un Chrome ou Edge récent."}
+  if(!ok)return "Code invalide. Vérifiez qu'il est complet et sans modification.";
+  const id=[...pl.slice(2)].map(x=>x.toString(16).padStart(2,'0')).join('');
+  if(LIC.used.includes(id))return 'Ce code a déjà été utilisé sur cet appareil.';
+  const t=now();LIC.exp=Math.max(t,LIC.exp)+days*864e5;LIC.used.push(id);LIC.last=Math.max(LIC.last,t);
+  await kvSet('lic',LIC);return 'ok';
+}
+async function doActivate(e){
+  e.preventDefault();const r=await activate(e.target.c.value);
+  if(r!=='ok'){$('#lerr').textContent=r;return}
+  toast('Licence activée jusqu\'au '+new Date(LIC.exp).toLocaleDateString('fr-FR'));render();
+}
+const codeBox=`<form onsubmit="doActivate(event)"><label>Code d'activation<textarea name="c" rows="3" required placeholder="Collez ici le code reçu par WhatsApp" style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-top:4px"></textarea></label><button class="p">Activer</button></form><p id="lerr" role="alert" style="color:var(--red);margin:8px 0 0"></p>`;
+const LOGO_BIG="data:image/jpeg;base64,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";
+const ICON=n=>`<svg viewBox="0 0 64 64" width="30" height="30" role="img" aria-label="InnovaStay"><rect width="64" height="64" rx="14" fill="#2B57A7"/><rect x="13" y="11" width="38" height="5" rx="2" fill="#D83A3A"/><rect x="16" y="16" width="32" height="38" fill="#fff"/><g fill="#FCBF17"><rect x="20" y="21" width="6" height="6" rx="1"/><rect x="29" y="21" width="6" height="6" rx="1"/><rect x="38" y="21" width="6" height="6" rx="1"/><rect x="20" y="31" width="6" height="6" rx="1"/><rect x="29" y="31" width="6" height="6" rx="1"/><rect x="38" y="31" width="6" height="6" rx="1"/><rect x="20" y="41" width="6" height="6" rx="1"/><rect x="38" y="41" width="6" height="6" rx="1"/></g><rect x="28.5" y="42" width="7" height="12" rx="1.5" fill="#D83A3A"/><rect x="10" y="54" width="44" height="3.5" rx="1.75" fill="#14181F"/></svg>`.replace(/width="30" height="30"/,`width="${n}" height="${n}"`);
+const waLink=t=>`https://wa.me/${TELS[0][1]}?text=${encodeURIComponent(t)}`;
+const whoAmI=()=>S.cfg.hotel.name?` Établissement : ${S.cfg.hotel.name}.`:'';
+const buyBtns=()=>`<div><a class="btn b" target="_blank" rel="noopener" href="${waLink("Bonjour, je souhaite le code d'activation InnovaStay de 30 jours (1 500 F)."+whoAmI())}">Demander le code 30 jours · 1 500 F</a><a class="btn y" target="_blank" rel="noopener" href="${waLink("Bonjour, je souhaite le code d'activation InnovaStay de 1 an (15 000 F)."+whoAmI())}">Demander le code 1 an · 15 000 F</a></div>`;
+const brandBlock=()=>`<img src="${LOGO_BIG}" alt="InnovaData" style="height:84px;width:auto;max-width:100%"><hr style="border:0;border-top:1px solid var(--line);margin:16px 0"><div style="display:flex;align-items:center;justify-content:center;gap:14px">${ICON(84)}<div style="text-align:left"><div style="font-size:30px;font-weight:800;line-height:1.1">Innova<span style="color:var(--blue)">Stay</span></div><div class="muted">Gestion d'hôtel et de résidence meublée</div></div></div>`;
+async function startTrial(){const t=now();LIC.exp=t+7*864e5;LIC.started=t;LIC.last=t;await kvSet('lic',LIC);toast('Essai gratuit activé : 7 jours');render()}
+function welcome(){
+  $('#nav').innerHTML='';$('#who').innerHTML='';$('#lic').textContent='';$('#hn').textContent='';$('#hl').style.display='none';
+  $('#app').innerHTML=`<div class="card" style="max-width:600px;margin:18px auto;text-align:center">${brandBlock()}
+  <h2 style="margin:20px 0 6px">Bienvenue !</h2>
+  <p>Votre <b>essai gratuit de 7 jours</b> a commencé. Il se termine le <b>${new Date(LIC.exp).toLocaleDateString('fr-FR')}</b>.</p>
+  <button class="p" style="font-size:17px;padding:14px 22px" onclick="enterApp()">Entrer dans l'application</button>
+  <hr style="border:0;border-top:1px solid var(--line);margin:20px 0 10px"><p class="muted" style="margin:0">Après l'essai, choisissez votre licence : <b>1 mois (30 jours) 1 500 F</b> · <b>1 an 15 000 F</b></p>${buyBtns()}
+  <details style="text-align:left"><summary>J'ai déjà un code d'activation</summary>${codeBox}</details>
+  <p class="muted" style="margin:14px 0 0">Installer sur téléphone : sur Android, menu ⋮ puis « Installer l'application » ; sur iPhone (Safari), Partager puis « Sur l'écran d'accueil ».</p>${contacts()}</div>`;
+}
+async function enterApp(){LIC.welcome=false;await kvSet('lic',LIC);render()}
+function lock(){
+  $('#nav').innerHTML='';$('#who').innerHTML='';$('#lic').textContent='';$('#hn').textContent='';$('#hl').style.display='none';
+  const isNew=!LIC.exp&&!LIC.started,clock=LIC.exp&&now()<LIC.last-864e5,trialEnded=!isNew&&!LIC.used.length;
+  const backupBtn=S.bookings.length?`<hr><p class="muted">Vos données restent enregistrées sur cet appareil.</p><button class="s" style="margin:0" onclick="backup()">Télécharger une sauvegarde</button>`:'';
+  let body;
+  if(isNew)body=`<h2 style="margin:20px 0 6px">Bienvenue !</h2><p>Essayez InnovaStay <b>gratuitement pendant 7 jours</b>, sans code.</p>
+   <button class="p" style="font-size:17px;padding:14px 22px" onclick="startTrial()">Commencer mon essai gratuit (7 jours)</button>
+   <hr style="border:0;border-top:1px solid var(--line);margin:20px 0 10px"><p class="muted" style="margin:0">Après l'essai, choisissez votre licence : <b>1 mois (30 jours) 1 500 F</b> · <b>1 an 15 000 F</b></p>${buyBtns()}
+   <details style="text-align:left"><summary>J'ai déjà un code d'activation</summary>${codeBox}</details>
+   <p class="muted" style="margin:14px 0 0">Installer sur téléphone : sur Android, menu ⋮ puis « Installer l'application » ; sur iPhone (Safari), Partager puis « Sur l'écran d'accueil ».</p>${contacts()}`;
+  else{
+    const why=clock?"La date de cet appareil semble incorrecte. Remettez la bonne date, puis rechargez la page.":trialEnded?'Votre essai gratuit de 7 jours est terminé.':`Votre licence a expiré le ${new Date(LIC.exp).toLocaleDateString('fr-FR')}.`;
+    body=`<h2 style="margin:20px 0 6px">${why}</h2>${clock?'':`<p>Pour continuer : <b>1 mois (30 jours) 1 500 F</b> · <b>1 an 15 000 F</b></p>${buyBtns()}`}${codeBox}${contacts()}${backupBtn}`;
+  }
+  $('#app').innerHTML=`<div class="card" style="max-width:600px;margin:18px auto;text-align:center">${brandBlock()}${body}</div>`;
+}
+const bannerLic=()=>licDays()<=7?`<div class="alert" style="border-color:var(--sun);background:#fff8e0">${LIC.used.length?`<b>Votre licence expire dans ${licDays()} jour(s).</b> Demandez votre nouveau code :`:`<b>Essai gratuit : il vous reste ${licDays()} jour(s).</b> Pour continuer, demandez votre code de licence :`}${buyBtns()}</div>`:'';
+function sLic(){
+  const trial=!LIC.used.length;
+  return `<div class="card" style="max-width:640px"><p><b>${trial?'Essai gratuit en cours':'Licence active'} jusqu'au ${new Date(LIC.exp).toLocaleDateString('fr-FR')}</b> (${licDays()} jour(s) restant(s))</p>
+  <p>Licences : <b>1 mois (30 jours) 1 500 F</b> · <b>1 an 15 000 F</b></p>${buyBtns()}${codeBox}<p class="muted">Un nouveau code s'ajoute au temps restant : vous ne perdez aucun jour.</p>${contacts()}</div>`;
+}
+
+/* ===== Installation (PWA) ===== */
+let DEFERRED=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();DEFERRED=e;const b=$('#inst');if(b)b.hidden=false});
+async function installApp(){if(!DEFERRED)return;DEFERRED.prompt();await DEFERRED.userChoice;DEFERRED=null;$('#inst').hidden=true}
+window.addEventListener('appinstalled',()=>{const b=$('#inst');if(b)b.hidden=true;toast('Application installée')});
+if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
+
+/* ===== Démarrage ===== */
+Promise.all([load(),kvGet('lic')]).then(([s,l])=>{if(s)S={...S,...s};S.cfg=mergeCfg(S.cfg);if(l)LIC={...LIC,...l};
+  if(!LIC.exp&&!LIC.started){const t=now();LIC={...LIC,exp:t+7*864e5,started:t,last:t,welcome:true};kvSet('lic',LIC)}
+  render();navigator.storage?.persist?.()});
+setInterval(()=>{if(tab==='dash'&&!$('#dlg').open)render()},30000);
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "id": "/",
+  "name": "InnovaStay",
+  "short_name": "InnovaStay",
+  "description": "Gestion d'hôtel et de résidence meublée par InnovaData",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "lang": "fr",
+  "background_color": "#F7F8FA",
+  "theme_color": "#2B57A7",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
